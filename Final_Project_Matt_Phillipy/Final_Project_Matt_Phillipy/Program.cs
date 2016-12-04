@@ -65,8 +65,8 @@ class MyInventory
                         itemdata[numberofitems].itemId = itemid2;
                         itemdata[numberofitems].sDescription = description;
                         itemdata[numberofitems].dblPricePerItem = price2;
-                        itemdata[numberofitems].dblPricePerItem = quantity2;
-                        itemdata[numberofitems].dblPricePerItem = cost2;
+                        itemdata[numberofitems].iQuantityOnHand = quantity2;
+                        itemdata[numberofitems].dblOurCostPerItem = cost2;
                         numberofitems++;
                         break;
 
@@ -86,10 +86,26 @@ class MyInventory
                            if (itemdata[x].itemId == chgid)
                            {
                                fFound = true;
-                               // code to show what has to happen if the item in the list is found
-                               // reset the count to show a new count for your list 
-                               // (Note: your list is now increased by one item)
-                           }
+                                //Console.WriteLine(itemdata[x].sDescription);
+                                Console.Write("Please enter a new description :");
+                                var newdescription = Console.ReadLine();
+                                itemdata[x].sDescription = newdescription;
+
+                                Console.Write("Please enter a new sell price/unit :");
+                                var newsellprice = Console.ReadLine();
+                                itemdata[x].dblPricePerItem = double.Parse(newsellprice);
+
+                                Console.Write("Please enter a new quantity :");
+                                var newquantity = Console.ReadLine();
+                                itemdata[x].iQuantityOnHand = int.Parse(newquantity);
+
+                                Console.Write("Please enter a new cost/unit :");
+                                var newunitcost = Console.ReadLine();
+                                itemdata[x].dblOurCostPerItem = double.Parse(newunitcost);
+                                                              
+
+
+                            }
                        }
 
                        if (!fFound) // and if not found
@@ -115,13 +131,31 @@ class MyInventory
                         Console.WriteLine("Item#  ItemID  Description           Price  QOH  Cost  Value");
                         Console.WriteLine("-----  ------  --------------------  -----  ---  ----  -----");
 
+                        // code in this block. Use the above line format as a guide for printing or displaying the items in your list right under it
+                        for (int index = 0; index < numberofitems; index++)
+                        {
+
+                            Console.Write("{0,5}  ", index + 1);
+                            Console.Write("{0,6}  ", itemdata[index].itemId);
+                            Console.Write("{0,-20}  ", itemdata[index].sDescription);
+                            Console.Write("{0,5}  ", itemdata[index].dblPricePerItem);
+                            Console.Write("{0,3}  ", itemdata[index].iQuantityOnHand);
+                            Console.Write("{0,4}  ", itemdata[index].dblOurCostPerItem);
+                            Console.Write("{0,5}  ", itemdata[index].iQuantityOnHand * itemdata[index].dblOurCostPerItem);
+                            Console.WriteLine();
+
+                        }
+                        /*Console.WriteLine("Item#  ItemID  Description           Price  QOH  Cost  Value");
+                        Console.WriteLine("-----  ------  --------------------  -----  ---  ----  -----");
+
 
                         // code in this block. Use the above line format as a guide for printing or displaying the items in your list right under it
                         for (int index = 0; index < numberofitems; index++)
                         {
-                            Console.WriteLine("{0}     {1}       {2}              {3}   {4}    {5}     {6}", index + 1, itemdata[index].itemId, itemdata[index].sDescription, itemdata[index].dblPricePerItem, itemdata[index].iQuantityOnHand, itemdata[index].dblOurCostPerItem, itemdata[index].dblValueOfItem);
-                        }
-                        Console.Write("\nPlease enter Item# to delete: )", numberofitems);
+                            Console.WriteLine("{0}     {1}       {2}              {3}   {4}    {5}     {6}", index + 1, itemdata[index].itemId, itemdata[index].sDescription, itemdata[index].dblPricePerItem, itemdata[index].iQuantityOnHand, itemdata[index].dblOurCostPerItem);
+                        }*/
+
+                        Console.Write("\nPlease enter Item# to delete: ", numberofitems);
                         var itemNumberToDelete = Console.ReadLine();
                         var indexToDelete = int.Parse(itemNumberToDelete);
                         int newid = int.Parse(itemNumberToDelete);
@@ -145,6 +179,8 @@ class MyInventory
                 
                 case 4:  //list all items in current database if this option is selected
                     {
+                        
+
                         if (numberofitems == 0)
                         {
                             Console.WriteLine("Item#  ItemID  Description           Price  QOH  Cost  Value");
@@ -155,16 +191,22 @@ class MyInventory
                         }
                         Console.WriteLine("Item#  ItemID  Description           Price  QOH  Cost  Value");
                         Console.WriteLine("-----  ------  --------------------  -----  ---  ----  -----");
-
-
+                      
                         // code in this block. Use the above line format as a guide for printing or displaying the items in your list right under it
                         for (int index = 0; index < numberofitems; index++)
                         {
-                            Console.WriteLine("{0}     {1}       {2}              {3}   {4}    {5}     {6}", index + 1, itemdata[index].itemId, itemdata[index].sDescription, itemdata[index].dblPricePerItem, itemdata[index].iQuantityOnHand, itemdata[index].dblOurCostPerItem, itemdata[index].dblValueOfItem);
+                            
+                            Console.Write("{0,5}  ", index + 1);
+                            Console.Write("{0,6}  ", itemdata[index].itemId);
+                            Console.Write("{0,-20}  ", itemdata[index].sDescription);
+                            Console.Write("{0,5}  ", itemdata[index].dblPricePerItem);
+                            Console.Write("{0,3}  ", itemdata[index].iQuantityOnHand);
+                            Console.Write("{0,4}  ", itemdata[index].dblOurCostPerItem);
+                            Console.Write("{0,5}  ", itemdata[index].iQuantityOnHand * itemdata[index].dblOurCostPerItem);
+                            Console.WriteLine();
+
                         }
-
-
-
+                        
                         break;
                     }
 
