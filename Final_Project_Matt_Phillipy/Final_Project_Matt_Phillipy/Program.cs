@@ -71,7 +71,7 @@ class MyInventory
                         break;
 
                     }
-                /*   
+                   
                case 2: //change items in the list if this option is selected  
                        //Session 7 0:46:00  need a forloop to find the item, when I find it need to change it
                        //
@@ -81,9 +81,9 @@ class MyInventory
                        int chgid = int.Parse(strchgid);
                        bool fFound = false;
 
-                       for (int x = 0; x < icount; x++)
+                       for (int x = 0; x < numberofitems; x++)
                        {
-                           if (itemprop[x].itemIDNo == chgid)
+                           if (itemdata[x].itemId == chgid)
                            {
                                fFound = true;
                                // code to show what has to happen if the item in the list is found
@@ -98,7 +98,7 @@ class MyInventory
                        }
                         break;
                    }
-                   */
+                   
 
                 case 3: //delete items in the list if this option is selected
                         //Session 7 0:47:22 - find it (for loop), delete it, then resort the array
@@ -121,7 +121,7 @@ class MyInventory
                         {
                             Console.WriteLine("{0}     {1}       {2}              {3}   {4}    {5}     {6}", index + 1, itemdata[index].itemId, itemdata[index].sDescription, itemdata[index].dblPricePerItem, itemdata[index].iQuantityOnHand, itemdata[index].dblOurCostPerItem, itemdata[index].dblValueOfItem);
                         }
-                        Console.Write("\nPlease enter Item# to delete:  (1-{0})", numberofitems);
+                        Console.Write("\nPlease enter Item# to delete: )", numberofitems);
                         var itemNumberToDelete = Console.ReadLine();
                         var indexToDelete = int.Parse(itemNumberToDelete);
                         int newid = int.Parse(itemNumberToDelete);
@@ -129,7 +129,7 @@ class MyInventory
                         // Squish the array from index to the end
                         for (var index = indexToDelete - 1; index < numberofitems; index++)
                         {
-                            // Just copy the pet from the next index into the current index
+                            // Just copy the item from the next index into the current index
                             itemdata[index] = itemdata[index + 1];
                         }
                         // We have one less item
@@ -142,17 +142,7 @@ class MyInventory
                         break;
 
                     }
-                /*{
-                    Console.Write("Please enter an item No to delete:");
-                    string strnewid = Console.ReadLine();
-                    int newid = int.Parse(strnewid);
-                    bool fDeleted = false;
-
-                    
-
-            break;
-            }
-            */
+                
                 case 4:  //list all items in current database if this option is selected
                     {
                         if (numberofitems == 0)
@@ -160,7 +150,7 @@ class MyInventory
                             Console.WriteLine("Item#  ItemID  Description           Price  QOH  Cost  Value");
                             Console.WriteLine("-----  ------  --------------------  -----  ---  ----  -----");
 
-                            Console.WriteLine("\n    Database is empty. No items to delete");
+                            Console.WriteLine("\n    No items to delete");
                             break;
                         }
                         Console.WriteLine("Item#  ItemID  Description           Price  QOH  Cost  Value");
