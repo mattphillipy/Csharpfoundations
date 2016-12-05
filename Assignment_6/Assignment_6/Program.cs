@@ -16,7 +16,7 @@ namespace Assignment_6
         static void Main()
         {
             var numberOfPets = 0;  //Matt:  Using an integer to keep track of count
-            var pets = new Pet[10];  //Matt:  Declaring an array for the struct Pet; maximum 10 items
+            var pets = new Pet[10];  //Matt:  Instatiating and declaring an array for the struct Pet; maximum 10 items
             while (true)  // never ending loop that shows user program options
             {
                 Console.Write("A)dd D)elete L)ist pets:");
