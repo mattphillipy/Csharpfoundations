@@ -47,7 +47,7 @@ class MyInventory
                 case 1: // add an item to the list if this option is selected
                     {
 
-                        Console.Write("Please enter item id :");
+                        Console.Write("Please enter ItemID :");
                         var itemid = Console.ReadLine();
                         var itemid2 = int.Parse(itemid);
                         Console.Write("Please enter description :");
@@ -76,7 +76,30 @@ class MyInventory
                        //Session 7 0:46:00  need a forloop to find the item, when I find it need to change it
                        //
                    {
-                       Console.Write("Please enter an item ID No:");
+                        if (numberofitems == 0)
+                        {
+                            Console.WriteLine("No items to modify");
+                            break;
+                        }
+                        Console.WriteLine("ItemID  Description           Price  QOH  Cost  Value");
+                        Console.WriteLine("------  --------------------  -----  ---  ----  -----");
+
+                        // code in this block. Use the above line format as a guide for printing or displaying the items in your list right under it
+                        for (int index = 0; index < numberofitems; index++)
+                        {
+
+                            
+                            Console.Write("{0,6}  ", itemdata[index].itemId);
+                            Console.Write("{0,-20}  ", itemdata[index].sDescription);
+                            Console.Write("{0,5}  ", itemdata[index].dblPricePerItem);
+                            Console.Write("{0,3}  ", itemdata[index].iQuantityOnHand);
+                            Console.Write("{0,4}  ", itemdata[index].dblOurCostPerItem);
+                            Console.Write("{0,5}  ", itemdata[index].iQuantityOnHand * itemdata[index].dblOurCostPerItem);
+                            Console.WriteLine();
+
+                        }
+                        
+                       Console.Write("\nPlease enter ItemID to modify::");
                        string strchgid = Console.ReadLine();
                        int chgid = int.Parse(strchgid);
                        bool fFound = false;
@@ -145,16 +168,7 @@ class MyInventory
                             Console.WriteLine();
 
                         }
-                        /*Console.WriteLine("Item#  ItemID  Description           Price  QOH  Cost  Value");
-                        Console.WriteLine("-----  ------  --------------------  -----  ---  ----  -----");
-
-
-                        // code in this block. Use the above line format as a guide for printing or displaying the items in your list right under it
-                        for (int index = 0; index < numberofitems; index++)
-                        {
-                            Console.WriteLine("{0}     {1}       {2}              {3}   {4}    {5}     {6}", index + 1, itemdata[index].itemId, itemdata[index].sDescription, itemdata[index].dblPricePerItem, itemdata[index].iQuantityOnHand, itemdata[index].dblOurCostPerItem);
-                        }*/
-
+                        
                         Console.Write("\nPlease enter Item# to delete: ", numberofitems);
                         var itemNumberToDelete = Console.ReadLine();
                         var indexToDelete = int.Parse(itemNumberToDelete);
